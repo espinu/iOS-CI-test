@@ -13,6 +13,7 @@ struct Foo {
     
     func foo() -> Int {
         _ = foo1()
+        let bla = "unused variable"
         return param1+param2
     }
     func foo1() -> Int {

@@ -41,28 +41,28 @@ end
 
 # Xcode summary
 def run_xcode_summary()
-  # Ignoring warnings from Pods
-  xcode_summary.ignored_files = 'Pods/**'
-  # Ignoring specific warnings
-  xcode_summary.ignored_results { |result|
-    result.message.start_with?("ld") # Ignore ld_warnings
-  }
-  # Comment on each lines
   xcode_summary.inline_mode = true
-  xcode_summary.report 'build/reports/xcode_errors.json'
+  xcode_summary.report 'xcodebuild.json'
+  xcprofiler.inline_mode = true
+  xcprofiler.report 'CI-test'
 end
 
 # Test Coverage report
 def run_xcov()
-  report = xcov.produce_report(
-    scheme: 'CI-test',
-    workspace: 'CI-test.xcworkspace',
-    only_project_targets: true,
-    minimum_coverage_percentage: 20.0,
-    include_test_targets: false,
-    ignore_file_path: '.xcovignore'
-  )
-  xcov.output_report(report)
+  # report = xcov.produce_report(
+  #   scheme: 'CI-test',
+  #   workspace: 'CI-test.xcworkspace',
+  #   only_project_targets: true,
+  #   minimum_coverage_percentage: 20.0,
+  #   include_test_targets: false,
+  #   ignore_file_path: '.xcovignore'
+  # )
+  # xcov.output_report(report)
+  slather.configure("./CI-test.xcodeproj", "CI-test", options: {
+  workspace: './CI-test.xcworkspace'})
+  slather.notify_if_coverage_is_less_than(minimum_coverage: 20)
+  slather.notify_if_modified_file_is_less_than(minimum_coverage: 60)
+  slather.show_coverage
 end
 
 # MAIN
