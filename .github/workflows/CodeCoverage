@@ -1,0 +1,24 @@
+name: code_coverage
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [master]
+
+jobs:
+  metrics:
+    name: Run Metrics
+    runs-on: [self-hosted]
+
+    steps:
+    - name: Show PR number
+      env:
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+        PR_BASE: ${{ github.event.pull_request.base.ref }}
+        PR_HEAD: ${{ github.event.pull_request.head.ref }}
+      run: echo "The PR number is $PR_NUMBER, the base is $PR_BASE, the head is $PR_HEAD"
+
+    - uses: actions/checkout@v2
+
+    - name: Run Metrics through fastlane
+      run: bundle exec fastlane code_coverage

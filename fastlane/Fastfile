@@ -15,9 +15,26 @@
 
 default_platform(:ios)
 
+before_all do
+clear_derived_data
+end
+
 platform :ios do
   desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+  lane :code_coverage do
+    scan(scheme: "CI-test", code_coverage: true, output_directory: "./reports", disable_xcpretty: false)
+    # slather(cobertura_xml: true, jenkins: true, scheme: "CI-test", proj: "./CI-test.xcodeproj")
+    # lizard(source_folder: "CI-test", language: "swift,objectivec", export_type: "xml", report_file: "lizard-report.xml")
+    # swiftlint(output_file: "swiftlint.txt", ignore_exit_status: true)
+    # xcov(
+    #   workspace: "CI-test.xcworkspace",
+    #   scheme: "CI-test",
+    #   output_directory: "xcov_output"
+    # )
+    danger(
+      danger_id: "metrics",
+      dangerfile: "Dangerfile",
+      verbose: true
+    )
   end
 end
