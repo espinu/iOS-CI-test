@@ -41,23 +41,17 @@ end
 
 # Xcode summary
 def run_xcode_summary()
-  xcode_summary.inline_mode = true
-  xcode_summary.report 'xcodebuild.json'
   xcprofiler.inline_mode = true
   xcprofiler.report 'CI-test'
+
+  xcodebuild.json_file = "./fastlane/reports/xcpretty-json-formatter-results.json"
+  xcodebuild.parse_warnings # returns number of warnings
+  xcodebuild.parse_errors # returns number of errors
+  xcodebuild.perfect_build # returns a bool indicating if the build was perfect
 end
 
 # Test Coverage report
-def run_xcov()
-  # report = xcov.produce_report(
-  #   scheme: 'CI-test',
-  #   workspace: 'CI-test.xcworkspace',
-  #   only_project_targets: true,
-  #   minimum_coverage_percentage: 20.0,
-  #   include_test_targets: false,
-  #   ignore_file_path: '.xcovignore'
-  # )
-  # xcov.output_report(report)
+def run_test_coverage_report()
   slather.configure("./CI-test.xcodeproj", "CI-test", options: {
   workspace: './CI-test.xcworkspace'})
   slather.notify_if_coverage_is_less_than(minimum_coverage: 20)
@@ -68,4 +62,4 @@ end
 # MAIN
 run_lint()
 run_xcode_summary()
-run_xcov()
+run_test_coverage_report()

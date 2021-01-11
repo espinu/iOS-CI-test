@@ -5,6 +5,7 @@
 gem 'fastlane-plugin-lizard'
 gem 'danger'
 gem 'xcresult'
+gem 'danger-xcodebuild'
 gem 'danger-slather'
 gem 'danger-xcprofiler'
 gem 'danger-swiftlint'

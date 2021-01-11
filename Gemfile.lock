@@ -65,6 +65,8 @@ GEM
       thor (~> 0.19)
     danger-xcode_summary (0.5.2)
       danger-plugin-api (~> 1.0)
+    danger-xcodebuild (0.0.6)
+      danger-plugin-api (~> 1.0)
     danger-xcov (0.5.0)
       danger (>= 2.1)
       xcov (>= 1.7.3)
@@ -272,6 +274,7 @@ DEPENDENCIES
   danger-slather
   danger-swiftlint
   danger-xcode_summary
+  danger-xcodebuild
   danger-xcov
   danger-xcprofiler
   fastlane
