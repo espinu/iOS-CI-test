@@ -3,7 +3,7 @@ name: code_coverage
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    branches: [master]
+    branches: [main]
 
 jobs:
   metrics:
