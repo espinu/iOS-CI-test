@@ -36,6 +36,7 @@ warn("Big PR") if git.lines_of_code > 500
 # Run SwiftLint on diff
 def run_lint()
   swiftlint.verbose = true
+  swiftlint.config_file = '.swiftlint.yml'
   swiftlint.lint_files inline_mode: true
 end
 
@@ -65,12 +66,7 @@ def run_xcov()
   xcov.output_report(report)
 end
 
-def run_lock_dependency_check()
-  lock_dependency_versions.check(warning: false)
-end
-
 # MAIN
 run_lint()
-# run_xcode_summary() #buggy
+run_xcode_summary()
 run_xcov()
-run_lock_dependency_check()
