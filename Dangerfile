@@ -58,7 +58,7 @@ def run_xcov()
   report = xcov.produce_report(
     scheme: 'CI-test',
     workspace: 'CI-test.xcworkspace',
-    # include_targets: 'MovieDB.app',
+    include_targets: 'CI-test.app',
     only_project_targets: true,
     minimum_coverage_percentage: 60.0,
     include_test_targets: false,
