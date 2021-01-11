@@ -19,6 +19,9 @@ jobs:
       run: echo "The PR number is $PR_NUMBER, the base is $PR_BASE, the head is $PR_HEAD"
 
     - uses: actions/checkout@v2
-
-    - name: Run Metrics through fastlane
-      run: bundle exec fastlane code_coverage
+    - uses: maierj/fastlane-action@v2.0.0
+      with:
+        lane: 'code_coverage'
+        subdirectory: 'ios'
+    # - name: Run Metrics through fastlane
+    #   run: bundle exec fastlane code_coverage
