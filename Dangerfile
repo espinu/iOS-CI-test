@@ -58,7 +58,7 @@ def run_xcov()
     scheme: 'CI-test',
     workspace: 'CI-test.xcworkspace',
     only_project_targets: true,
-    minimum_coverage_percentage: 60.0,
+    minimum_coverage_percentage: 20.0,
     include_test_targets: false,
     html_report: true,
     ignore_file_path: '.xcovignore'
