@@ -36,8 +36,7 @@ warn("Big PR") if git.lines_of_code > 500
 # Run SwiftLint on diff
 def run_lint()
   swiftlint.verbose = true
-  swiftlint.lint_all_files = false
-  swiftlint.lint_files
+  swiftlint.lint_files inline_mode: true
 end
 
 # Xcode summary
@@ -58,7 +57,6 @@ def run_xcov()
   report = xcov.produce_report(
     scheme: 'CI-test',
     workspace: 'CI-test.xcworkspace',
-    include_targets: 'CI-test.app',
     only_project_targets: true,
     minimum_coverage_percentage: 60.0,
     include_test_targets: false,
