@@ -12,6 +12,39 @@ struct Foo {
     let param2: Int
     
     func foo() -> Int {
-        return param1 + param2
+        _ = foo1()
+        return param1+param2
+    }
+    func foo1() -> Int {
+        if param1 == 3 {
+            empty()
+        } else if param2 == 233 {
+            if param1 == 11 {
+                if param1 == 11 {
+                    if param1 == 21 {
+                        if param1 == 13 {
+                            if param1 == 11 {
+                                if param1 == 11 {
+                                    
+                                }
+                            }else if param1 == 11 {
+                                if param1 == 11 {
+                                    
+                                }
+                            }
+                        }else if param1 == 11 {
+                            
+                        }
+                    }
+                }
+            }
+        } else if param1 == 11 {
+            
+        }
+        return param1+param2
+    }
+    
+    func empty() {
+        
     }
 }
