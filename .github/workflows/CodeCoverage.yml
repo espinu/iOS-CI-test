@@ -21,5 +21,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Metrics through fastlane
       run: bundle exec fastlane code_coverage
-        env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+      env:
+        DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
