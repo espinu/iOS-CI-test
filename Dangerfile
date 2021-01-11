@@ -35,7 +35,6 @@ warn("Big PR") if git.lines_of_code > 500
 
 # Run SwiftLint on diff
 def run_lint()
-  swiftlint.verbose = true
   swiftlint.config_file = '.swiftlint.yml'
   swiftlint.lint_files inline_mode: true
 end
@@ -49,7 +48,7 @@ def run_xcode_summary()
     result.message.start_with?("ld") # Ignore ld_warnings
   }
   # Comment on each lines
-  # xcode_summary.inline_mode = true
+  xcode_summary.inline_mode = true
   xcode_summary.report 'build/reports/xcode_errors.json'
 end
 

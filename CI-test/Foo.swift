@@ -45,6 +45,9 @@ struct Foo {
     }
     
     func empty() {
-        
+        parseData()
     }
+    
+    @available(*, deprecated, message: "Parse your data by hand instead")
+    func parseData() { }
 }
