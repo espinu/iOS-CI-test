@@ -60,10 +60,8 @@ def run_xcov()
     only_project_targets: true,
     minimum_coverage_percentage: 20.0,
     include_test_targets: false,
-    html_report: true,
     ignore_file_path: '.xcovignore'
   )
-  File.open("build/reports/xcov_report_diff.html", 'w') { |file| file.write(report.html_value) }
   xcov.output_report(report)
 end
 
