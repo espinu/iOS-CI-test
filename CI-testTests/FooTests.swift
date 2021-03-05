@@ -11,6 +11,6 @@ import XCTest
 class FooTests: XCTestCase {
     func testFoo() throws {
         let foo = Foo(param1: 2, param2: 3)
-        XCTAssert(foo.foo() == 5, "Expect the result to be 5")
+        XCTAssert(foo.foo() == 5, "Expect the result to be 5 ")
     }
 }
