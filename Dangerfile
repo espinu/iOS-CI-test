@@ -61,5 +61,5 @@ end
 
 # MAIN
 run_lint()
-run_xcode_summary()
+# run_xcode_summary()
 run_test_coverage_report()
